@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [All Test Suite]">
+  <listeners>
+    <listener class-name="extentreports.listener.ExtentTestNGIReporterListener"/>
+  </listeners>
+  <test thread-count="5" name="D:/Workspace/epautotest(failed)">
+    <classes>
+      <class name="com.eports.test.TestMethodsDemo">
+        <methods>
+          <include name="logDemo"/>
+          <include name="test1"/>
+        </methods>
+      </class> <!-- com.eports.test.TestMethodsDemo -->
+    </classes>
+  </test> <!-- D:/Workspace/epautotest(failed) -->
+</suite> <!-- Failed suite [All Test Suite] -->

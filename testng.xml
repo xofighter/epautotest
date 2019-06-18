@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="D:/Workspace/epautotest">
+        <classes><class name="com.eports.test.AppTest">
+            <methods><include name="shouldAnswerWithTrue"/>
+            </methods>
+        </class>
+            <class name="com.eports.test.TestMethodsDemo">
+                <methods>
+                    <include name="test1"/>
+                    <include name="test2"/>
+                    <include name="test3"/>
+                    <include name="logDemo"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <listeners>
+        <listener class-name="extentreports.listener.ExtentTestNGIReporterListener"/>
+    </listeners>
+
+</suite>
