@@ -9,7 +9,7 @@ import com.arronlong.httpclientutil.common.SSLs.SSLProtocolVersion;
 import org.apache.http.Header;
 import org.apache.http.client.HttpClient;
 import org.testng.annotations.Test;
-import utils.AssertJSON;
+import others.AssertJSON;
 import utils.CsvUtil2;
 
 

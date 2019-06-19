@@ -2,20 +2,27 @@
 <testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default Suite" duration-ms="1893" started-at="2019-06-18T11:41:02Z" finished-at="2019-06-18T11:41:04Z">
+  <suite name="Default Suite" duration-ms="265" started-at="2019-06-19T09:54:03Z" finished-at="2019-06-19T09:54:03Z">
     <groups>
     </groups>
-    <test name="epautotest" duration-ms="1893" started-at="2019-06-18T11:41:02Z" finished-at="2019-06-18T11:41:04Z">
-      <class name="com.eports.test.TestDemo">
-        <test-method status="FAIL" signature="apiTestCase()[pri:0, instance:com.eports.test.TestDemo@6ebc05a6]" name="apiTestCase" duration-ms="1859" started-at="2019-06-18T11:41:02Z" finished-at="2019-06-18T11:41:04Z">
-          <exception class="java.lang.ClassCastException">
+    <test name="epautotest" duration-ms="265" started-at="2019-06-19T09:54:03Z" finished-at="2019-06-19T09:54:03Z">
+      <class name="db.mysql.DataTableTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:db.mysql.DataTableTest@57855c9a]" name="setUp" is-config="true" duration-ms="5" started-at="2019-06-19T09:54:03Z" finished-at="2019-06-19T09:54:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="FAIL" signature="testSetDataTable()[pri:0, instance:db.mysql.DataTableTest@57855c9a]" name="testSetDataTable" duration-ms="243" started-at="2019-06-19T09:54:03Z" finished-at="2019-06-19T09:54:03Z">
+          <exception class="java.lang.IndexOutOfBoundsException">
             <message>
-              <![CDATA[java.lang.String cannot be cast to java.lang.Integer]]>
+              <![CDATA[Index: 0, Size: 0]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Integer
-at utils.AssertJSON.jsonPathAsInteger(AssertJSON.java:49)
-at com.eports.test.TestDemo.apiTestCase(TestDemo.java:83)
+              <![CDATA[java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+at java.util.ArrayList.rangeCheck(ArrayList.java:657)
+at java.util.ArrayList.get(ArrayList.java:433)
+at db.mysql.DataTable.setDataTable(DataTable.java:33)
+at db.mysql.DBManager.getResultData(DBManager.java:71)
+at db.mysql.DataTableTest.testSetDataTable(DataTableTest.java:29)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -42,11 +49,15 @@ at org.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:73)
 at org.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:123)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.ClassCastException -->
+          </exception> <!-- java.lang.IndexOutOfBoundsException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- apiTestCase -->
-      </class> <!-- com.eports.test.TestDemo -->
+        </test-method> <!-- testSetDataTable -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:db.mysql.DataTableTest@57855c9a]" name="tearDown" is-config="true" duration-ms="1" started-at="2019-06-19T09:54:03Z" finished-at="2019-06-19T09:54:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- db.mysql.DataTableTest -->
     </test> <!-- epautotest -->
   </suite> <!-- Default Suite -->
 </testng-results>
