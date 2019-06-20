@@ -31,7 +31,7 @@ import java.util.ArrayList;
  *              4.2.7 倒数第三个：包名
  */
 
-public class CsvUtil2 {
+public class CsvUtil {
 
     public static Object[][] readCSV(String csvFilePath) {
         //try{业务代码}catch(Exception e){如果做业务的过程中出了错，的异常处理逻辑}
@@ -92,6 +92,6 @@ public class CsvUtil2 {
 
         //JavaCSV.writeCSV(csvFilePath);
 //    	csvUtil.readCSV("C:\\softwareData\\workspace\\guoya-test\\src\\main\\resources\\testNG\\searchData.csv");
-        CsvUtil2.readCSV("case/api_testdata.csv");
+        CsvUtil.readCSV("case/api_testdata.csv");
     }
 }

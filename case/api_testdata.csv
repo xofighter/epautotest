@@ -1,4 +1,4 @@
-﻿id,url,param,expectedresult,desc,run,request,response,variable,method
+﻿id,url,param,expectedresult,desc,run,request,response,variable,method,sql
 1,http://192.168.30.166:8889/c/ship/findShips,"{""params"":"""",""findShipsAO"":{
  ""current"": 0,
  ""isAsc"": true,
@@ -97,4 +97,8 @@
   ""visibleStatus"": 0
  },
  ""size"": 0
-}""",查找公司船队,Y,,,,Post
+}""",查找公司船队,Y,,,,Post," select * from ship as s where 1=1 and s.is_del=0
+        <if test=""name != null and name != ''"">
+            AND name LIKE CONCAT('%',#{name},'%') or imo LIKE CONCAT('%',#{name},'%')
+        </if>
+        order by s.name asc`"

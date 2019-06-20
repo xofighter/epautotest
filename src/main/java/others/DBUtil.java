@@ -11,15 +11,14 @@ import java.sql.*;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.*;
+
 /**
  * 数据库操作辅助类
  *
- * @version 3.0
  * @author xiaocaiji
+ * @version 3.0
  */
-
 public class DBUtil {
-
     // 设置数据源(使用C3P0数据库连接池)
     private static DataSource dataSource = new ComboPooledDataSource("mysql-config");
     private static Logger logger = Logger.getLogger("DBUtil");
@@ -30,6 +29,7 @@ public class DBUtil {
     }
 
     // private static Connection conn;
+
     /**
      * 该语句必须是 SQL INSERT、UPDATE 、DELETE 语句
      *
@@ -38,7 +38,7 @@ public class DBUtil {
      * @throws Exception
      */
     public int execute(String sql) throws Exception {
-        return execute(sql, new Object[] {});
+        return execute(sql, new Object[]{});
     }
 
     /**
@@ -211,7 +211,7 @@ public class DBUtil {
         List<Map<String, Object>> list = getQueryList(sql, paramList);
         List beanList = new ArrayList();
 
-        for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+        for (Iterator iterator = list.iterator(); iterator.hasNext(); ) {
             Map<String, Object> map = (Map<String, Object>) iterator.next();
             Object obj = type.newInstance();
             for (int i = 0; i < propertyDescriptors.length; i++) {
@@ -243,7 +243,7 @@ public class DBUtil {
      * @return
      */
     public List<Map<String, Object>> getQueryList(String sql) throws Exception {
-        return getQueryList(sql, new Object[] {});
+        return getQueryList(sql, new Object[]{});
     }
 
     /**
@@ -288,10 +288,8 @@ public class DBUtil {
      * 分页查询
      *
      * @param sql
-     * @param params
-     *            查询条件参数
-     * @param page
-     *            分页信息
+     * @param params 查询条件参数
+     * @param page   分页信息
      * @return
      */
     public Page getQueryPage(Class<?> type, String sql, Object[] params, Page page) {
@@ -327,10 +325,8 @@ public class DBUtil {
      * 分页查询
      *
      * @param sql
-     * @param params
-     *            查询条件参数
-     * @param page
-     *            分页信息
+     * @param params 查询条件参数
+     * @param page   分页信息
      * @return
      */
     public Page getQueryPage(String sql, Object[] params, Page page) {
@@ -369,7 +365,7 @@ public class DBUtil {
      * @return
      */
     public Map<String, Object> getObject(String sql) throws Exception {
-        return getObject(sql, new Object[] {});
+        return getObject(sql, new Object[]{});
     }
 
     /**
@@ -448,6 +444,7 @@ public class DBUtil {
             }
             // = pstmt.setObject(i + 1, paramList[i]);
         }
+        return;
     }
 
     /**
@@ -538,8 +535,7 @@ public class DBUtil {
     /**
      * 可以选择三个不同的数据库连接
      *
-     * //@param JDBC
-     *            ,JNDI（依赖web容器 DBCP
+     * //@param JDBC ,JNDI（依赖web容器 DBCP
      * @return
      * @throws Exception
      */

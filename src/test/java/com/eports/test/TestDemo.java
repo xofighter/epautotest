@@ -6,11 +6,10 @@ import com.arronlong.httpclientutil.common.HttpConfig;
 import com.arronlong.httpclientutil.common.HttpHeader;
 import com.arronlong.httpclientutil.common.HttpResult;
 import com.arronlong.httpclientutil.common.SSLs.SSLProtocolVersion;
-import org.apache.http.Header;
 import org.apache.http.client.HttpClient;
 import org.testng.annotations.Test;
-import others.AssertJSON;
-import utils.CsvUtil2;
+import utils.AssertJSON;
+import utils.CsvUtil;
 
 
 public class TestDemo {
@@ -21,7 +20,7 @@ public class TestDemo {
         String urlLink = null; // url
         String params = null; // 入参
         String requestmethod = null; // 请求方式
-        Object[][] data = CsvUtil2.readCSV("case/api_testdata.csv");
+        Object[][] data = CsvUtil.readCSV("case/api_testdata.csv");
         for(Object[] td : data) {
             urlLink = td[1].toString();
             params = td[2].toString();
@@ -30,11 +29,14 @@ public class TestDemo {
             System.out.println("urlLink:" + urlLink);
             System.out.println("params:" + params);
             System.out.println("requestmethod:" + requestmethod);
+
             //插件式配置Header（各种header信息、自定义header）
-            Header[] headers = HttpHeader.custom()
-                    .userAgent("javacl")
-                    .other("Content-Type", "application/json")
-                    .build();
+            HttpHeader headers = HttpHeader.custom().contentType("application/json");
+//                    .contentType("application/json")
+//                    .build();
+//                    .userAgent("javacl")
+//                    .other("Content-Type", "application/json")
+//                    .build();
 
             //插件式配置生成HttpClient时所需参数（超时、连接池、ssl、重试）
             HCB hcb = HCB.custom()
@@ -53,7 +55,7 @@ public class TestDemo {
 
             //插件式配置请求参数（网址、请求参数、编码、client）
             HttpConfig config = HttpConfig.custom()
-                    .headers(headers)	//设置headers，不需要时则无需设置
+                    .headers(headers.build())	//设置headers，不需要时则无需设置
                     .url(urlLink)	          //设置请求的url
                     //.map(map)	          //设置请求参数，没有则无需设置
                     .encoding("utf-8") //设置请求和返回编码，默认就是Charset.defaultCharset()
@@ -80,7 +82,7 @@ public class TestDemo {
             System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
             System.out.println("result: " + result);
             AssertJSON.assertThat(result).jsonPathAsString("$msg").isNotEmpty();
-            AssertJSON.assertThat(result).jsonPathAsInteger("$code").isEqualTo(0).as("比较code的内容");
+            AssertJSON.assertThat(result).jsonPathAsString("$code").isEqualTo("0").as("比较code的内容");
             System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
 
             //如果指向看是否访问正常

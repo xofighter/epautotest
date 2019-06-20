@@ -1,4 +1,4 @@
-package utils;
+package others;
 
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
@@ -9,7 +9,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVUtil {
+public class CSVUtil2 {
 
     public static char separator = ',';
 

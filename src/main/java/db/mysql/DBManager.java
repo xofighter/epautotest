@@ -1,6 +1,11 @@
 package db.mysql;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -49,24 +54,50 @@ public class DBManager {
      * @throws SQLException
      */
     public DataTable getResultData(String[] coulmn, int[] type, String sql) throws SQLException {
+
         DataTable dt = new DataTable();
 
         ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
 
         if (!setPstmtParam(coulmn, type, sql))
             return null;
-//        pstmt = conn.prepareStatement(sql);
         rs = pstmt.executeQuery();
-        System.out.println("rs: "+rs);
-//        ResultSetMetaData rsmd = rs.getMetaData();//取数据库的列名
-//        int numberOfColumns = rsmd.getColumnCount();
-//        while (rs.next()) {
-//            HashMap<String, String> rsTree = new HashMap<String, String>();
-//            for (int r = 1; r < numberOfColumns + 1; r++) {
-//                rsTree.put(rsmd.getColumnName(r), rs.getObject(r).toString());
-//            }
-//            list.add(rsTree);
-//        }
+        ResultSetMetaData rsmd = rs.getMetaData();//取数据库的列名
+        int numberOfColumns = rsmd.getColumnCount();
+
+        //调试代码
+//        System.out.println("pstmt: "+ pstmt );
+//        System.out.println("rs: " + rs);
+//        System.out.println("rsmd: " + rsmd);
+//        System.out.println("numberOfColumns: " + numberOfColumns);
+//        int j = 1;
+
+        while (rs.next()) {
+            HashMap<String, String> rsTree = new HashMap<String, String>();
+
+            for (int r = 1; r < numberOfColumns + 1; r++) {
+
+                //调试代码
+//                System.out.println("rsmd.getColumnName(" + r + "): " + rsmd.getColumnName(r));
+                if (null == rs.getObject(r)) {
+                    rsTree.put(rsmd.getColumnName(r), "null");
+                    //调试代码
+//                    System.out.println("rs.getObject(" + r + "): null");
+                } else {
+                    rsTree.put(rsmd.getColumnName(r), rs.getObject(r).toString());
+                    //调试代码
+//                    rsTree.put(rsmd.getColumnName(r), String.valueOf(rs.getObject(r)));
+//                    System.out.println("rs.getObject(" + r + "): " + rs.getObject(r).toString());
+                }
+
+
+            }
+            //调试代码
+//            System.out.println("完成第" + j + "次list!");
+//            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++");
+//            j++;
+            list.add(rsTree);
+        }
         closeDB();
         dt.setDataTable(list);
         return dt;
@@ -127,4 +158,3 @@ public class DBManager {
 
     }
 }
-

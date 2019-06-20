@@ -1,6 +1,10 @@
 package db.mysql;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * 数据集封装
@@ -80,6 +84,7 @@ public class DataTable {
     public void setColCoun(int colCoun) {
         this.colCoun = colCoun;
     }
+
 
 }
 
